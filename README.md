@@ -1,4 +1,5 @@
-# MNIST - Deep Neural Networks Using TensorFlow
+# Computer Vision - Deep Neural Networks Using TensorFlow
+- Using Deep Neural Networks built with TensorFlow to classify handwritten digits using the MNIST dataset.
 
 ## Results
 - 'Baseline' model test accuracy: 96.54%
@@ -6,13 +7,13 @@
 
 ## DNN Architecture and ML Workflow
 
-### Preprocessing
+#### Preprocessing
 - 70,000 28x28x1 images. 60,000 in train dataset and 10,000 in test dataset. Train dataset was further split 90%/10% (i.e., 54,000/6,000) into train/validation, to allow for early stopping (to prevent overfitting), as well as hyperparameter tuning.
 - Pixel intensity values of integers between 0-255 were scaled to floats between 0-1.
 - Data was shuffled with a buffer size of 10,000 (prior to partitioning train and validation datasets).
 - Batch dimension added for all 3 datasets; batch size of 100 used for training dataset.
 
-### Architecture
+#### Architecture
 - Flattened, fully-connected input layer; 28x28x1 flattened to 784x1.
 - Multiple fully-connected hidden layers. For baseline model, used 2 layers, each with 50 neurons and ReLU activation function.
 - Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
