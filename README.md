@@ -1,5 +1,5 @@
 # Computer Vision - Deep Neural Networks Using TensorFlow
-- Using Deep Neural Networks built with TensorFlow to classify handwritten digits using the MNIST dataset.
+- Using Deep Neural Networks built with TensorFlow to classify handwritten digits using the MNIST dataset to practice using TensorFlow framework.
 
 ## Results
 - 'Baseline' model test accuracy: 96.54%
