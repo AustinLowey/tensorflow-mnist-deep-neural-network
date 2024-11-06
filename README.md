@@ -1,8 +1,8 @@
 # MNIST - Deep Neural Networks Using TensorFlow
 
 ## Results
-'Baseline' model test accuracy: 96.54%
-Hyperparameter-tuned model test accuracy: 98.01%
+- 'Baseline' model test accuracy: 96.54%
+- Hyperparameter-tuned model test accuracy: 98.01%
 
 ## DNN Architecture and ML Workflow
 
