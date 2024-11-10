@@ -2,8 +2,7 @@
 - Using Deep Neural Networks to classify handwritten digits using the MNIST dataset to practice using TensorFlow framework.
 
 ## Results
-- 'Baseline' model test accuracy: 96.54%
-- Hyperparameter-tuned model test accuracy: 98.01%
+- Hyperparameter-tuned model accuracy on test dataset: 98.01%
 
 ## DNN Architecture and ML Workflow
 
@@ -27,7 +26,7 @@
   - hidden_layer_depths = [2, 3, 4]
   - activation_functions = ['relu', 'elu', 'tanh']
  
-- Conclusion: Best validation accuracy from all hyperparameter combinations was 99.88%. Finally, the test dataset was utilized to evaluate the model associated with this validation accuracy; this final model achieved a 98.01% accuracy on the test dataset.
+- Conclusion: The highest validation accuracy from all hyperparameter combinations was 99.88%, which only had a 0.03% difference from the training accuracy; therefore this was considered the best model. Finally, the test dataset was utilized to evaluate the model associated with this validation accuracy; this final model achieved a 98.01% accuracy on the test dataset.
   - Test accuracy: 98.01% | Validation accuracy: 99.88% | Train accuracy: 99.85%
   - Epochs trained (until overfitting began): 23 | Training time: 0min 28sec
   - Best Hyperparameters: {'hidden_layer_size': 128, 'hidden_layer_size_variation': 'constant', 'hidden_layer_depth': 2, 'activation_function': 'tanh'}
