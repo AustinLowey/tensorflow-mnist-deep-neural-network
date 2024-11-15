@@ -1,5 +1,5 @@
-# Computer Vision - Deep Neural Networks Using TensorFlow
-- Using Deep Neural Networks to classify handwritten digits using the MNIST dataset to practice using TensorFlow framework.
+# Machine Learning - Deep Neural Networks Using TensorFlow
+Deep Neural Networks classification of handwritten digits using the MNIST dataset.
 
 ## Results
 - Hyperparameter-tuned model accuracy on test dataset: 98.01%
