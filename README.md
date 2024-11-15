@@ -2,7 +2,7 @@
 Deep Neural Networks classification of handwritten digits using the MNIST dataset.
 
 ## Results
-- Hyperparameter-tuned model accuracy on test dataset: 98.01%
+- Hyperparameter-tuned model accuracy on test dataset: 99.18%
 
 ## DNN Architecture and ML Workflow
 
