@@ -4,7 +4,7 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 ## Results
 **Final Model - Test Accuracy: 99.18%**
 
-<img src="assets/img/model-comaprisons.png">
+<img src="assets/img/model-comparisons.png">
 
 ## DNN Architecture and ML Workflow
 
