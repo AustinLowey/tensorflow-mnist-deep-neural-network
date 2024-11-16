@@ -1,4 +1,4 @@
-# Machine Learning - Deep Neural Networks Using TensorFlow
+# Machine Learning - Digit Classification with TensorFlow
 Deep Neural Networks classification of handwritten digits using the MNIST dataset.
 
 ## Results
