@@ -13,7 +13,7 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 2) Fully-connected network baseline model built.
 3) Hyperparameter tuning performed on fully-connected network using Keras Tuner's Hyperband.
 4) Convolutional neural network (CNN) baseline model built.
-5) CNN hyperparameter tuning with Bayesian Optimization.
+5) Bayesian Optimization CNN hyperparameter tuning.
 6) Data augmentation on training dataset.
 7) Final model chosen and evaluated on test dataset.
 
@@ -21,20 +21,28 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 - 70,000 28x28x1 images of handwritten digits 0-9, split into 50k/10k/10k train/validation/test datasets, with additional data augmentation on the training set performed later in the model-improvement process.
 - Pixel intensity values of integers between 0-255 were scaled to floats between 0-1.
 
-### 2)
-- Two main architecture types were explored: Convolutional Neural Networks (CNNs) and Fully-Connected Networks.
-- Flattened, fully-connected input layer; 28x28x1 flattened to 784x1.
-- Multiple fully-connected hidden layers. For baseline model, used 2 layers, each with 50 neurons and ReLU activation function.
+### 2) Fully-Connected Network - Baseline Model
+- Input layer: 28x28x1 flattened to 1x784.
+- Multiple fully-connected hidden layers. For baseline model, used 2 sets of dense+dropout hidden layers were used, each with 64 neurons and ReLU activation function.
 - Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
 - Adaptive Moment Estimation used for optimizer and Sparse Categorical Crossentropy used for loss.
-- Early stopping implemented to prevent overfitting. Stopped when validation loss began increasing with a patience factor of 2 and restore_best_weights=True (i.e., once val_loss increased for 2 consecutive epochs, stop training and "roll back" by 2 epochs). Note: 5 epochs was used for the simple baseline model instead of early stopping.
+- Early stopping implemented to prevent overfitting. Stopped when validation loss began increasing with a patience factor of 5 and restore_best_weights=True (i.e., once val_loss increased for 5 consecutive epochs, stop training and "roll back" by 5 epochs).
 
-### 3)
-- Tuned the following hyperparameters by manually implementing 4 for loops to explore all 90 combinations, though in practice using an API like Keras Tuner's Bayesian Hyperparameter Optimization or scikit-learn's GridSearchCV would generally be better.
-  - hidden_layer_sizes = [32, 64, 128, 256, 512] # Number of neurons in 1st hidden layer
-  - hidden_layer_size_decreases = ['constant', 'half'] # Use same number of neurons for all hidden layers, or decrease by half each layer
-  - hidden_layer_depths = [2, 3, 4]
-  - activation_functions = ['relu', 'elu', 'tanh']
+### 3) Fully-Connected Network - Hyperparameter Tuning
+- Tuned the following hyperparameters with Keras Tuner's Hyperband.
+  - num_hidden_layers = [1, 2, 3] # Number of dense layers. Each dense layer also followed by a dropout layer.
+  - hidden_layer_size = [32, 64, 128, 256] # Number of neurons in each dense layer.
+  - activation = ['relu', 'tanh']
+  - dropout_rate = [0.1 - 0.5 with step=0.05]
+  - l2_strength = [0.0001, 0.001, 0.01] # L2 regularization (ridge regression) applied to each dense layer.
+  - learning_rate = [0.0001 - 0.01 with step=0.001]
+ 
+<img src="assets/img/training-curve-dense-hpt.png">
+    
+- The best Hyperband model was re-trained with the best-performing hyperparameter combination, and allowed to train with a patience=10 (instead of the patience=5 used in Hyperband).
+- **Best Fully-Connected Network Architecture: Results After 92 Epochs:**
+  - Accuracy: Train=99.30% | Val=98.15%
+  - Loss: Train=0.0471 | Val=0.0836
  
 ### 4)
 ### 5)
