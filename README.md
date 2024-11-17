@@ -29,17 +29,17 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 - Adaptive Moment Estimation used for optimizer and Sparse Categorical Crossentropy used for loss.
 - Early stopping implemented to prevent overfitting. Stopped when validation loss began increasing with a patience factor of 2 and restore_best_weights=True (i.e., once val_loss increased for 2 consecutive epochs, stop training and "roll back" by 2 epochs). Note: 5 epochs was used for the simple baseline model instead of early stopping.
 
-## 3)
+### 3)
 - Tuned the following hyperparameters by manually implementing 4 for loops to explore all 90 combinations, though in practice using an API like Keras Tuner's Bayesian Hyperparameter Optimization or scikit-learn's GridSearchCV would generally be better.
   - hidden_layer_sizes = [32, 64, 128, 256, 512] # Number of neurons in 1st hidden layer
   - hidden_layer_size_decreases = ['constant', 'half'] # Use same number of neurons for all hidden layers, or decrease by half each layer
   - hidden_layer_depths = [2, 3, 4]
   - activation_functions = ['relu', 'elu', 'tanh']
  
-## 4)
-## 5)
-## 6)
-## 7)
+### 4)
+### 5)
+### 6)
+### 7)
  
 - Conclusion: The highest validation accuracy from all hyperparameter combinations was 99.88%, which only had a 0.03% difference from the training accuracy; therefore this was considered the best model. Finally, the test dataset was utilized to evaluate the model associated with this validation accuracy; this final model achieved a 98.01% accuracy on the test dataset.
   - Test accuracy: 98.01% | Validation accuracy: 99.88% | Train accuracy: 99.85%
