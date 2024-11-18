@@ -23,7 +23,7 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 - For CNN architectures, a channel dimension was also added to the input arrays.
 - Batching was handled later during training in the tf Model.fit() method.
 
-### 2. Feedforward Neural Network (FNN) - Baseline Model
+### 2. Feedforward Neural Network (FNN): Baseline Model
 - Input layer: 28x28 preprocessed images flattened to 1x784.
 - Multiple fully-connected/dense hidden layers. For baseline model, used 2 sets of dense+dropout hidden layers were used, each with 64 neurons and ReLU activation function.
 - Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
