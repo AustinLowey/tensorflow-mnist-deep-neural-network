@@ -10,27 +10,27 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 
 ### Overview / Table of Contents
 1) [Preprocessing was performed on the dataset of 70,000 images.](#1-preprocessing)
-2) Feedforward neural network (FNN) baseline model built.
-3) Hyperparameter tuning performed on FNN using Keras Tuner's Hyperband.
-4) Convolutional neural network (CNN) baseline model built.
-5) Bayesian Optimization CNN hyperparameter tuning.
-6) Data augmentation on training dataset.
-7) Final model chosen and evaluated on test dataset.
+2) [Feedforward neural network (FNN) baseline model built.](#2-feedforward-neural-network-fnn-baseline-model)
+3) [Hyperparameter tuning performed on FNN using Keras Tuner's Hyperband]
+4) [Convolutional neural network (CNN) baseline model built.]
+5) [Bayesian Optimization CNN hyperparameter tuning.]
+6) [Data augmentation on training dataset.]
+7) [Final model chosen and evaluated on test dataset.]
 
-### 1) Preprocessing
+### 1. Preprocessing
 - 70,000 28x28x1 images of handwritten digits 0-9, split into 50k/10k/10k train/validation/test datasets, with additional data augmentation on the training set performed later in the model-improvement process.
 - Pixel intensity values of integers between 0-255 were scaled to floats between 0-1.
 - For CNN architectures, a channel dimension was also added to the input arrays.
 - Batching was handled later during training in the tf Model.fit() method.
 
-### 2) Feedforward Neural Network (FNN) - Baseline Model
+### 2. Feedforward Neural Network (FNN) - Baseline Model
 - Input layer: 28x28 preprocessed images flattened to 1x784.
 - Multiple fully-connected/dense hidden layers. For baseline model, used 2 sets of dense+dropout hidden layers were used, each with 64 neurons and ReLU activation function.
 - Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
 - Adaptive Moment Estimation used for optimizer and Sparse Categorical Crossentropy used for loss.
 - Early stopping implemented to prevent overfitting. Stopped when validation loss began increasing with a patience factor of 5 and restore_best_weights=True (i.e., once val_loss increased for 5 consecutive epochs, stop training and "roll back" by 5 epochs).
 
-### 3) FNN - Hyperparameter Tuning
+### 3. FNN - Hyperparameter Tuning
 Tuned the following hyperparameters with Keras Tuner's Hyperband.
 
 | Hyperparameter            | Range                          | Best   | Description |
@@ -49,13 +49,13 @@ Tuned the following hyperparameters with Keras Tuner's Hyperband.
   - Accuracy: Train=99.30% | Val=98.15%
   - Loss: Train=0.0471 | Val=0.0836
  
-### 4) Convolutional Neural Network (CNN) - Baseline Model
+### 4. Convolutional Neural Network (CNN) - Baseline Model
 - Input layer: 28x28x1 preprocessed images
 - Multiple convolutional and subsampling layers, followed by a dense layer and the output layer. For baseline model, used 2 pairs of convolutional+max pooling layers, with a 3x3 convolutional window containing 32 and 64 filters, padding='same', 2x2 pooling size, dense layer size of 64 neurons, and ReLU activation function.
 - Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
 - Adaptive Moment Estimation used for optimizer and Sparse Categorical Crossentropy used for loss.
 
-### 5) CNN - Hyperparameter Tuning
+### 5. CNN - Hyperparameter Tuning
 Tuned the following hyperparameters with Keras Tuner's Bayesian Optimization. Batch normalization was also added after each convolutional layer and after the dense layer.
 
 | Hyperparameter            | Range                      | Best         | Description |
@@ -72,10 +72,10 @@ Tuned the following hyperparameters with Keras Tuner's Bayesian Optimization. Ba
 
 The results of this HPT process were then used in the data augmentation HPT in the next section.
 
-### 6) CNN - Data Augmentation Hyperparameter Tuning
+### 6. CNN - Data Augmentation Hyperparameter Tuning
 
 
-### 7) 
+### 7. 
 
 - Conclusion: The highest validation accuracy from all hyperparameter combinations was 99.88%, which only had a 0.03% difference from the training accuracy; therefore this was considered the best model. Finally, the test dataset was utilized to evaluate the model associated with this validation accuracy; this final model achieved a 98.01% accuracy on the test dataset.
   - Test accuracy: 98.01% | Validation accuracy: 99.88% | Train accuracy: 99.85%
