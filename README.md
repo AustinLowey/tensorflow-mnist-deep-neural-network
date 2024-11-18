@@ -8,8 +8,8 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 
 ## DNN Architecture and ML Workflow
 
-### Overview
-1) Preprocessing was performed on the dataset of 70,000 images.
+### Overview / Table of Contents
+1) [Preprocessing was performed on the dataset of 70,000 images.](#1-preprocessing)
 2) Feedforward neural network (FNN) baseline model built.
 3) Hyperparameter tuning performed on FNN using Keras Tuner's Hyperband.
 4) Convolutional neural network (CNN) baseline model built.
