@@ -112,6 +112,6 @@ Several learning rates (0.0001, 0.0005, 0.0008, 0.001, 0.002, 0.003, 0.0005, 0.0
 ### 8. Final Model and Testing
 Now that that overall architecture was chosen to be a CNN and the hyperparameters chosen through a sequence of 3 hyperparameter tuning experiments, the model with the lowest validation loss was chosen as the final model. It was then evalauted on the test dataset and achieved an **accuracy of 99.46%** and **loss of 0.0175**. The predictions can be visualized through the below confusion matrix.
 
-<img src="assets/img/training-curve-cnn-final-model-pic2.png">
+<img src="assets/img/confusion-matrix.png">
 
 Finally, the progression of each model type and their performances can be seen on the [plot in the beginning of this README](#results).
