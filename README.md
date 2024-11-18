@@ -97,6 +97,7 @@ The best Bayesian Optimization model was re-trained with the best-performing hyp
 <img src="assets/img/training-curve-cnn-hpt-data-aug.png" width="800">
 
 However, after plotting the training/validation curves, it was clear that the solution-convergence was irregular, so a final optimization was performed to explore slower learning rates.
+
 **Results After 7 Epochs:**
  - Accuracy: Train=98.57% | Val=99.22%
  - Loss: Train=0.0483 | Val=0.0301
