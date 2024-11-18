@@ -45,10 +45,11 @@ The following hyperparameters were tuned with Keras Tuner's Hyperband.
 | `dropout_rate`            | [0.1 - 0.5 with step=0.05]      | 0.4    | Dropout rate for regularization dropout layers |
 | `l2_strength`             | [0.0001, 0.001, 0.01]           | 0.0001 | L2 regularization (ridge regression) factor |
 | `learning_rate`           | [0.0001 - 0.01 with step=0.001] | 0.0001 | Learning rate for the optimizer |
- 
-<img src="assets/img/training-curve-dense-hpt.png">
 
 The best Hyperband model was re-trained with the best-performing hyperparameter combination, and allowed to train with an early stopping patience=10 (instead of the patience=5 used in Hyperband).
+
+<img src="assets/img/training-curve-dense-hpt.png" width="800">
+
 **Best FNN Architecture: Results After 92 Epochs:**
  - Accuracy: Train=99.30% | Val=98.15%
  - Loss: Train=0.0471 | Val=0.0836
@@ -91,9 +92,11 @@ The network structure-defining hyperparameters from the previous HPT were used i
 | `dropout_rate`             | [0.1 - 0.5 with step=0.1]            | 0.2             | Dropout rate for regularization dropout layers |
 | `learning_rate`            | [0.0001, 0.0005, 0.001, 0.005, 0.01] | 0.01            | Learning rate for the optimizer |
 
-<img src="assets/img/training-curve-cnn-hpt-data-aug.png">
+The best Bayesian Optimization model was re-trained with the best-performing hyperparameter combination, achieving an accuracy of 99.22% and loss of 0.0301 on the validation dataset.
 
-The best Bayesian Optimization model was re-trained with the best-performing hyperparameter combination, achieving an accuracy of 99.22% and loss of 0.0301 on the validation dataset. However, after plotting the training/validation curves, it was clear that the solution-convergence was irregular, so a final optimization was performed to explore slower learning rates.
+<img src="assets/img/training-curve-cnn-hpt-data-aug.png" width="800">
+
+However, after plotting the training/validation curves, it was clear that the solution-convergence was irregular, so a final optimization was performed to explore slower learning rates.
 **Results After 7 Epochs:**
  - Accuracy: Train=98.57% | Val=99.22%
  - Loss: Train=0.0483 | Val=0.0301
@@ -102,7 +105,7 @@ The best Bayesian Optimization model was re-trained with the best-performing hyp
 ### 7. CNN: Learning Rate Optimization on Results from Previous 2 HPT Experiments
 Several learning rates (0.0001, 0.0005, 0.0008, 0.001, 0.002, 0.003, 0.0005, 0.01) were tested using GridSearchCV. All other hyperparameters defining the neural network's architecture and the data augmentation pipeline were set to match the results of the previous 2 HPT experiments in sections 5 and 6. The best learning rate was repeatedly found to be 0.001 and the final model achieved a validation loss of 0.0229.
 
-<img src="assets/img/training-curve-cnn-final-model-pic2.png">
+<img src="assets/img/training-curve-cnn-final-model-pic2.png" width="800">
 
 **Final CNN Model: Results After 22 Epochs:**
 - Accuracy: Train=99.06% | Val=99.34%
@@ -112,6 +115,6 @@ Several learning rates (0.0001, 0.0005, 0.0008, 0.001, 0.002, 0.003, 0.0005, 0.0
 ### 8. Final Model and Testing
 Now that that overall architecture was chosen to be a CNN and the hyperparameters chosen through a sequence of 3 hyperparameter tuning experiments, the model with the lowest validation loss was chosen as the final model. It was then evalauted on the test dataset and achieved an **accuracy of 99.46%** and **loss of 0.0175**. The predictions can be visualized through the below confusion matrix.
 
-<img src="assets/img/confusion-matrix.png">
+<img src="assets/img/confusion-matrix.png" width="400">
 
 Finally, the progression of each model type and their performances can be seen on the [plot in the beginning of this README](#results).
