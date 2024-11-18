@@ -28,7 +28,7 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 
 ### 2. Feedforward Neural Network (FNN): Baseline Model
 - Input layer: 28x28 preprocessed images flattened to 1x784.
-- Multiple fully-connected/dense hidden layers. For baseline model, used 2 sets of dense+dropout hidden layers were used, each with 64 neurons and ReLU activation function.
+- Multiple fully-connected/dense hidden layers. For baseline model, used 2 sets of dense+dropout hidden layers, each with 64 neurons and ReLU activation function.
 - Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
 - Adaptive Moment Estimation used for optimizer and Sparse Categorical Crossentropy used for loss.
 - Early stopping implemented to prevent overfitting. Stopped when validation loss began increasing with a patience factor of 5 and restore_best_weights=True (i.e., once val_loss increased for 5 consecutive epochs, stop training and "roll back" by 5 epochs).
