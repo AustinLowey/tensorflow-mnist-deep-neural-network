@@ -16,7 +16,7 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 5) [Bayesian Optimization CNN hyperparameter tuning.](#5-cnn-hyperparameter-tuning)
 6) [Data augmentation on training dataset.](#6-cnn-data-augmentation-hyperparameter-tuning)
 7) [Optimizing Learning Rate on Results of HPT Experiments](#7-cnn-learning-rate-optimization-on-results-from-previous-2-hpt-experiments)
-8) [Final model chosen and evaluated on test dataset.](#7=8-final-model-and-testing)
+8) [Final model chosen and evaluated on test dataset.](#8-final-model-and-testing)
 
 
 ### 1. Preprocessing
