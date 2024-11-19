@@ -29,7 +29,7 @@ Deep Neural Networks classification of handwritten digits using the MNIST datase
 ### 2. Feedforward Neural Network (FNN): Baseline Model
 - Input layer: 28x28 preprocessed images flattened to 1x784.
 - Multiple fully-connected/dense hidden layers. For baseline model, used 2 sets of dense+dropout hidden layers, each with 64 neurons and ReLU activation function.
-- Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
+- Output layer of size 10, representing 10 different digit classes. Softmax activation function connecting to output layer.
 - Adaptive Moment Estimation used for optimizer and Sparse Categorical Crossentropy used for loss.
 - Early stopping implemented to prevent overfitting. Stopped when validation loss began increasing with a patience factor of 5 and restore_best_weights=True (i.e., once val_loss increased for 5 consecutive epochs, stop training and "roll back" by 5 epochs).
 
@@ -46,7 +46,7 @@ The following hyperparameters were tuned with Keras Tuner's Hyperband.
 | `l2_strength`             | [0.0001, 0.001, 0.01]           | 0.0001 | L2 regularization (ridge regression) factor |
 | `learning_rate`           | [0.0001 - 0.01 with step=0.001] | 0.0001 | Learning rate for the optimizer |
 
-The best Hyperband model was re-trained with the best-performing hyperparameter combination, and allowed to train with an early stopping patience=10 (instead of the patience=5 used in Hyperband).
+The best Hyperband model was retrained with the best-performing hyperparameter combination, and allowed to train with an early stopping patience of 10 (instead of the patience of 5 used in Hyperband).
 
 <img src="assets/img/training-curve-dense-hpt.png" width="800">
 
@@ -58,7 +58,7 @@ The best Hyperband model was re-trained with the best-performing hyperparameter 
 ### 4. Convolutional Neural Network (CNN): Baseline Model
 - Input layer: 28x28x1 preprocessed images
 - Multiple convolutional and subsampling layers, followed by a dense layer and the output layer. For baseline model, used 2 pairs of convolutional+max pooling layers, with a 3x3 convolutional window containing 32 and 64 filters, padding='same', 2x2 pooling size, dense layer size of 64 neurons, and ReLU activation function.
-- Output layer of size 10, representing 10 different digit classses. Softmax activation function connecting to output layer.
+- Output layer of size 10, representing 10 different digit classes. Softmax activation function connecting to output layer.
 - Adaptive Moment Estimation used for optimizer and Sparse Categorical Crossentropy used for loss.
 
 
@@ -77,11 +77,11 @@ The following hyperparameters were tuned with Keras Tuner's Bayesian Optimizatio
 | `dropout_rate`            | [0.1 - 0.5 with step=0.1]  | 0.4          | Dropout rate for regularization dropout layers |
 | `learning_rate`           | [0.0001, 0.001, 0.01]      | 0.01         | Learning rate for the optimizer |
 
-The results of this HPT process were then used in the data augmentation HPT in the next section.
+The results of this HPT process were then used in the subsequent data augmentation HPT in the next section.
 
 
 ### 6. CNN: Data Augmentation Hyperparameter Tuning
-The network structure-defining hyperparameters from the previous HPT were used in a new HPT, but this time focusing on data augmentation. The following hyperparameters were tuned with Bayesian Optimization. These focused on spatial augmentations, such as rotating, zooming, and translating images. The dropout and learning rate from the previous experiment were not re-used, in order to allow greater flexibility during this second HPT.
+The network structure-defining hyperparameters from the previous HPT were used in a new HPT, but this time focusing on data augmentation. The following hyperparameters were tuned with Bayesian Optimization. These new hyperparameters focused on spatial augmentations, such as rotating, zooming, and translating images. The dropout and learning rate were also used again as hyperparameters, in order to allow greater flexibility during this second HPT.
 
 | Hyperparameter            | Range                                 | Best            | Description |
 |---------------------------|---------------------------------------|-----------------|-------------|
@@ -114,7 +114,7 @@ Several learning rates (0.0001, 0.0005, 0.0008, 0.001, 0.002, 0.003, 0.0005, 0.0
 
 
 ### 8. Final Model and Testing
-Now that that overall architecture was chosen to be a CNN and the hyperparameters chosen through a sequence of 3 hyperparameter tuning experiments, the model with the lowest validation loss was chosen as the final model. It was then evalauted on the test dataset and achieved an **accuracy of 99.46%** and **loss of 0.0175**. The predictions can be visualized through the below confusion matrix.
+Now that the overall architecture was chosen to be a CNN and the hyperparameters chosen through a sequence of 3 hyperparameter tuning experiments, the model with the lowest validation loss was chosen as the final model. It was then evaluated on the test dataset and achieved an **accuracy of 99.46%** and a **loss of 0.0175**. The predictions can be visualized through the below confusion matrix.
 
 <img src="assets/img/confusion-matrix.png" width="400">
 
